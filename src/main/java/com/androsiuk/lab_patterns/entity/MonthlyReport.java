@@ -42,7 +42,7 @@ public class MonthlyReport {
     @Column(name="penalties_number")
     private Integer penaltiesNumber;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "library_id", referencedColumnName = "id", nullable = false)
     private Library library;
 

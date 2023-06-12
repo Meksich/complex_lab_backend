@@ -19,7 +19,7 @@ public class Book {
     @Column
     private Integer id;
 
-    @Column(name="name")
+    @Column(name="name", nullable = false)
     private String name;
 
     @Column(name="author", nullable = false)
