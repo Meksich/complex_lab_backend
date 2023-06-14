@@ -15,7 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 public class LoanController {
     private final LoanService loanService;
-    // private final BookMapper bookMapper;
+    // private final LoanMapper loanMapper;
 
     @GetMapping
     public ResponseEntity<List<Loan>> get(){
