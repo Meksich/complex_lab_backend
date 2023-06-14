@@ -19,7 +19,7 @@ public class OrderProcessing {
         Date returnDate = new Date();
         double userBalanceDeduction ;
 
-        if ((damagePenalty > 0) || (!returnDate.after(expectedReturnDate))) {
+        if ((damagePenalty > 0) || (!returnDate.after(expectedReturnDate)) || (TimeUnit.DAYS.convert(returnDate.getTime() - issueDate.getTime(), TimeUnit.MILLISECONDS) >= 90)) {
             context = new Context(new PenaltyStrategy(damagePenalty));
         } else {
             context = new Context(new NoPenaltyStrategy(user));
