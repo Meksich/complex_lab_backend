@@ -8,6 +8,7 @@ import java.util.Set;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class UserCategoryDTO {
     private Integer id;
     private String name;

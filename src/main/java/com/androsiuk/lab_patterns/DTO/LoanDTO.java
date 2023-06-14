@@ -7,6 +7,7 @@ import java.util.Date;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class LoanDTO {
     private Integer id;
     private Date issueDate;

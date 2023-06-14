@@ -7,6 +7,7 @@ import java.util.Date;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class UserDTO {
     private Integer id;
     private String fullName;

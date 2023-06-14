@@ -5,6 +5,7 @@ import lombok.*;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class UserCatalogDTO {
     private Integer id;
     private Integer usersWithDueRent;

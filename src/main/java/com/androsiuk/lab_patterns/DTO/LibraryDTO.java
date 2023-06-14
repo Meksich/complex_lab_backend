@@ -3,10 +3,12 @@ package com.androsiuk.lab_patterns.DTO;
 import lombok.*;
 
 import java.util.Date;
+import java.util.Set;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class LibraryDTO {
     private Integer id;
     private Integer booksInRent;
@@ -15,5 +17,4 @@ public class LibraryDTO {
     private Double lastMonthIncome;
     private Double lastMonthPenalties;
     private Date foundationDate;
-
 }
