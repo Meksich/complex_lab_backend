@@ -1,6 +1,5 @@
 package com.androsiuk.lab_patterns.controller;
 
-import com.androsiuk.lab_patterns.entity.Book;
 import com.androsiuk.lab_patterns.entity.MonthlyReport;
 import com.androsiuk.lab_patterns.service.MonthlyReportService;
 import lombok.AllArgsConstructor;
@@ -15,7 +14,7 @@ import java.util.List;
 @AllArgsConstructor
 public class MonthlyReportController {
     private final MonthlyReportService monthlyReportService;
-    // private final BookMapper bookMapper;
+    // private final MonthlyReportMapper monthlyReportMapper;
 
     @GetMapping
     public ResponseEntity<List<MonthlyReport>> get(){
