@@ -1,6 +1,5 @@
 package com.androsiuk.lab_patterns.controller;
 
-import com.androsiuk.lab_patterns.entity.Book;
 import com.androsiuk.lab_patterns.entity.User;
 import com.androsiuk.lab_patterns.service.UserService;
 import lombok.AllArgsConstructor;
@@ -16,7 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 public class UserController {
     private final UserService userService;
-    // private final BookMapper bookMapper;
+    // private final UserMapper userMapper;
 
     @GetMapping
     public ResponseEntity<List<User>> get(){
