@@ -1,6 +1,5 @@
 package com.androsiuk.lab_patterns.controller;
 
-import com.androsiuk.lab_patterns.DTO.UserCategoryDTO;
 import com.androsiuk.lab_patterns.DTO.UserDTO;
 import com.androsiuk.lab_patterns.entity.User;
 import com.androsiuk.lab_patterns.mapper.UserMapper;
