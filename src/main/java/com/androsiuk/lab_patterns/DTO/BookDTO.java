@@ -20,6 +20,49 @@ public class BookDTO {
     private Date inServiceSince;
     private Boolean isRented;
     private Date returnDate;
-    private Integer library_id;
-    private Set<Integer> loan_ids;
+    private Integer libraryId;
+    private Set<Integer> loanIds;
+
+    private BookDTO(BookDTOBuilder builder) {
+        this.id = builder.id;
+        this.name = builder.name;
+        this.author = builder.author;
+        this.pages = builder.pages;
+        this.genre = builder.genre;
+        this.pledgeCost = builder.pledgeCost;
+        this.rentalDefaultCost = builder.rentalDefaultCost;
+        this.rentalExtraDayPrice = builder.rentalExtraDayPrice;
+        this.inServiceSince = builder.inServiceSince;
+        this.isRented = builder.isRented;
+        this.returnDate = builder.returnDate;
+        this.libraryId = builder.libraryId;
+        this.loanIds = builder.loanIds;
+    }
+
+    @NoArgsConstructor
+    @Setter
+    public static class BookDTOBuilder{
+        private Integer id;
+        private String name;
+        private String author;
+        private Integer pages;
+        private String genre;
+        private Double pledgeCost;
+        private Double rentalDefaultCost;
+        private Double rentalExtraDayPrice;
+        private Date inServiceSince;
+        private Boolean isRented;
+        private Date returnDate;
+        private Integer libraryId;
+        private Set<Integer> loanIds;
+
+        public BookDTOBuilder builder(){
+            return new BookDTOBuilder();
+        }
+
+        public BookDTO build(){
+            return new BookDTO(this);
+        }
+
+    }
 }
