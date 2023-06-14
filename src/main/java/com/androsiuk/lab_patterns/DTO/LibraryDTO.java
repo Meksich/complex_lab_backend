@@ -7,6 +7,7 @@ import java.util.Date;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class LibraryDTO {
     private Integer id;
     private Integer booksInRent;
@@ -15,5 +16,4 @@ public class LibraryDTO {
     private Double lastMonthIncome;
     private Double lastMonthPenalties;
     private Date foundationDate;
-
 }

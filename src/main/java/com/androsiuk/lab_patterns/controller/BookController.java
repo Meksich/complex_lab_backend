@@ -1,5 +1,6 @@
 package com.androsiuk.lab_patterns.controller;
 
+import com.androsiuk.lab_patterns.DTO.BookDTO;
 import com.androsiuk.lab_patterns.entity.Book;
 import com.androsiuk.lab_patterns.service.BookService;
 import lombok.AllArgsConstructor;

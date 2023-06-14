@@ -23,6 +23,10 @@ public class BookDTO {
     private Integer libraryId;
     private Set<Integer> loanIds;
 
+    public static BookDTOBuilder builder(){
+        return new BookDTOBuilder();
+    }
+
     private BookDTO(BookDTOBuilder builder) {
         this.id = builder.id;
         this.name = builder.name;
@@ -55,10 +59,6 @@ public class BookDTO {
         private Date returnDate;
         private Integer libraryId;
         private Set<Integer> loanIds;
-
-        public BookDTOBuilder builder(){
-            return new BookDTOBuilder();
-        }
 
         public BookDTO build(){
             return new BookDTO(this);

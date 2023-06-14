@@ -7,6 +7,7 @@ import java.sql.Date;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 public class MonthlyReportDTO {
     private Integer id;
     private Date month;
