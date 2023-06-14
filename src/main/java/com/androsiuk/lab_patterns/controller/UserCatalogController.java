@@ -1,6 +1,7 @@
 package com.androsiuk.lab_patterns.controller;
 
-import com.androsiuk.lab_patterns.entity.UserCatalog;
+import com.androsiuk.lab_patterns.DTO.UserCatalogDTO;
+import com.androsiuk.lab_patterns.mapper.UserCatalogMapper;
 import com.androsiuk.lab_patterns.service.UserCatalogService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -15,15 +16,16 @@ import java.util.List;
 @AllArgsConstructor
 public class UserCatalogController {
     private final UserCatalogService userCatalogService;
-    // private final UserCatalogMapper userCatalogMapper;
+    private final UserCatalogMapper userCatalogMapper;
 
     @GetMapping
-    public ResponseEntity<List<UserCatalog>> get(){
-        return new ResponseEntity<>(userCatalogService.getAll(), HttpStatus.OK);
+    public ResponseEntity<List<UserCatalogDTO>> get(){
+        List<UserCatalogDTO> dtoList = userCatalogService.getAll().stream().map(userCatalogMapper::map).toList();
+        return new ResponseEntity<>(dtoList, HttpStatus.OK);
     }
 
     @GetMapping(path = "/{id}")
-    public ResponseEntity<UserCatalog> get(@PathVariable Integer id){
-        return new ResponseEntity<>(userCatalogService.get(id), HttpStatus.OK);
+    public ResponseEntity<UserCatalogDTO> get(@PathVariable Integer id){
+        return new ResponseEntity<>(userCatalogMapper.map(userCatalogService.get(id)), HttpStatus.OK);
     }
 }

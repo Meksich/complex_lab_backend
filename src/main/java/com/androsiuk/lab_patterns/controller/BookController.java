@@ -2,6 +2,7 @@ package com.androsiuk.lab_patterns.controller;
 
 import com.androsiuk.lab_patterns.DTO.BookDTO;
 import com.androsiuk.lab_patterns.entity.Book;
+import com.androsiuk.lab_patterns.mapper.BookMapper;
 import com.androsiuk.lab_patterns.service.BookService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -15,30 +16,31 @@ import java.util.List;
 @AllArgsConstructor
 public class BookController {
     private final BookService bookService;
-    // private final BookMapper bookMapper;
+    private final BookMapper bookMapper;
 
     @GetMapping
-    public ResponseEntity<List<Book>> get(){
-        return new ResponseEntity<>(bookService.getAll(), HttpStatus.OK);
+    public ResponseEntity<List<BookDTO>> get(){
+        List<BookDTO> dtoList = bookService.getAll().stream().map(bookMapper::map).toList();
+        return new ResponseEntity<>(dtoList, HttpStatus.OK);
     }
 
     @GetMapping(path = "/{id}")
-    public ResponseEntity<Book> get(@PathVariable Integer id){
-        return new ResponseEntity<>(bookService.get(id), HttpStatus.OK);
+    public ResponseEntity<BookDTO> get(@PathVariable Integer id){
+        return new ResponseEntity<>(bookMapper.map(bookService.get(id)), HttpStatus.OK);
     }
 
     @PostMapping
-    public ResponseEntity<Book> create(@RequestBody Book book) {
-        return new ResponseEntity<>(bookService.create(book), HttpStatus.OK);
+    public ResponseEntity<BookDTO> create(@RequestBody Book book) {
+        return new ResponseEntity<>(bookMapper.map(bookService.create(book)), HttpStatus.OK);
     }
 
     @PutMapping(path = "/{id}")
-    public ResponseEntity<Book> update(@PathVariable Integer id, @RequestBody Book book) {
-        return new ResponseEntity<>(bookService.update(id, book), HttpStatus.OK);
+    public ResponseEntity<BookDTO> update(@PathVariable Integer id, @RequestBody Book book) {
+        return new ResponseEntity<>(bookMapper.map(bookService.update(id, book)), HttpStatus.OK);
     }
 
     @DeleteMapping(path = "/{id}")
-    public ResponseEntity<Book> delete(@PathVariable Integer id){
-        return new ResponseEntity<>(bookService.delete(id), HttpStatus.OK);
+    public ResponseEntity<BookDTO> delete(@PathVariable Integer id){
+        return new ResponseEntity<>(bookMapper.map(bookService.delete(id)), HttpStatus.OK);
     }
 }
