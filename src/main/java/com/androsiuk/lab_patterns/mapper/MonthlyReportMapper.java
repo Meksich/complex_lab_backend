@@ -17,7 +17,6 @@ public class MonthlyReportMapper implements Mapper<MonthlyReport, MonthlyReportD
         monthlyReportDTOBuilder.booksIssued(monthlyReport.getBooksIssued());
         monthlyReportDTOBuilder.newBooks(monthlyReport.getNewBooks());
         monthlyReportDTOBuilder.booksWithdrawn(monthlyReport.getBooksWithdrawn());
-        monthlyReportDTOBuilder.penaltiesNumber(monthlyReport.getPenaltiesNumber());
         monthlyReportDTOBuilder.libraryId(monthlyReport.getLibrary().getId());
         return monthlyReportDTOBuilder.build();
     }
