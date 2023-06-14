@@ -1,9 +1,6 @@
 package com.androsiuk.lab_patterns.DTO;
 
-import jakarta.persistence.*;
 import lombok.*;
-
-import java.util.Set;
 
 @Data
 @AllArgsConstructor

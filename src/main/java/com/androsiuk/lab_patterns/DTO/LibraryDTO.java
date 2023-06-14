@@ -3,7 +3,6 @@ package com.androsiuk.lab_patterns.DTO;
 import lombok.*;
 
 import java.util.Date;
-import java.util.Set;
 
 @Data
 @AllArgsConstructor

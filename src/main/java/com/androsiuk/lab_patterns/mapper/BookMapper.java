@@ -2,11 +2,8 @@ package com.androsiuk.lab_patterns.mapper;
 
 import com.androsiuk.lab_patterns.DTO.BookDTO;
 import com.androsiuk.lab_patterns.entity.Book;
-import com.androsiuk.lab_patterns.service.LoanService;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
