@@ -15,7 +15,7 @@ import java.util.List;
 @AllArgsConstructor
 public class LibraryController {
     private final LibraryService libraryService;
-    // private final BookMapper bookMapper;
+    // private final LibraryMapper libraryMapper;
 
     @GetMapping(path = "/{id}")
     public ResponseEntity<Library> get(@PathVariable Integer id){
