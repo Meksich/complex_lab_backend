@@ -22,7 +22,6 @@ public abstract class Service<Entity> {
         return null;
     }
     public Entity create(Entity entity) {
-        int a = 0;
         return getRepository().save(entity);
     }
 

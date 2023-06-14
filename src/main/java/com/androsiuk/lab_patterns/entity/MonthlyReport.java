@@ -39,8 +39,6 @@ public class MonthlyReport {
     @Column(name="books_withdrawn")
     private Integer booksWithdrawn;
 
-    @Column(name="penalties_number")
-    private Integer penaltiesNumber;
 
     @ManyToOne
     @JoinColumn(name = "library_id", referencedColumnName = "id", nullable = false)

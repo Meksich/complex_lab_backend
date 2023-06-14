@@ -17,7 +17,6 @@ public class MonthlyReportDTO {
     private Integer booksIssued;
     private Integer newBooks;
     private Integer booksWithdrawn;
-    private Integer penaltiesNumber;
     private Integer libraryId;
 
 }
