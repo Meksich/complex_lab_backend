@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 public class Context {
      public Strategy strategy;
 
-    public void executeStrategy(double userBalanceDeduction){
-        strategy.summarizeCost(userBalanceDeduction);
+    public double executeStrategy(double userBalanceDeduction){
+        return strategy.summarizeCost(userBalanceDeduction);
     }
 }

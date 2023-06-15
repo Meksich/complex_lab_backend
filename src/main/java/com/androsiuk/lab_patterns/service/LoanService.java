@@ -4,15 +4,14 @@ import com.androsiuk.lab_patterns.DTO.LoanDTO;
 import com.androsiuk.lab_patterns.entity.Loan;
 import com.androsiuk.lab_patterns.entity.MonthlyReport;
 import com.androsiuk.lab_patterns.observer.*;
+import com.androsiuk.lab_patterns.observer.Observer;
+import com.androsiuk.lab_patterns.processing.OrderProcessing;
 import com.androsiuk.lab_patterns.repository.*;
 import lombok.AllArgsConstructor;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Service
 @AllArgsConstructor
@@ -37,18 +36,21 @@ public class LoanService extends com.androsiuk.lab_patterns.service.Service<Loan
         loan.setIssueDate(new Date());
         loan.setReturnDate(loanDTO.getReturnDate());
         updateObserversList(loan);
-        create(loan);
         notifyAllObservers(loan);
+        create(loan);
+        observerList.clear();
         return loan;
     }
 
     public Loan returnBook(Integer id, LoanDTO loanDTO) {
         Loan loan = loanRepository.getOne(id);
+        loan.setUserBalanceDeduction(OrderProcessing.deductRentalCost(loan.getUser(), loan.getBook(),
+                loan.getIssueDate(), loan.getReturnDate(), loanDTO.getUserBalanceDeduction()));
         loan.setReturnDate(new Date());
-        loan.setUserBalanceDeduction(0.0);
         updateObserversList(loan);
-        update(id, loan);
         notifyAllObservers(loan);
+        update(id, loan);
+        observerList.clear();
         return loan;
     }
 

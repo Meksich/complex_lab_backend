@@ -7,6 +7,8 @@ import com.androsiuk.lab_patterns.strategy.NoPenaltyStrategy;
 import com.androsiuk.lab_patterns.strategy.PenaltyStrategy;
 import lombok.AllArgsConstructor;
 
+import java.time.temporal.ChronoUnit;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
@@ -15,25 +17,23 @@ import java.util.concurrent.TimeUnit;
 public class OrderProcessing {
     public static Context context;
 
-    public double deductRentalCost(User user, Book book,  Date issueDate, Date expectedReturnDate, double damagePenalty) {
+    public static double deductRentalCost(User user, Book book,  Date issueDate, Date expectedReturnDate, double damagePenalty) {
         Date returnDate = new Date();
         double userBalanceDeduction ;
 
-        if ((damagePenalty > 0) || (!returnDate.after(expectedReturnDate)) || (TimeUnit.DAYS.convert(returnDate.getTime() - issueDate.getTime(), TimeUnit.MILLISECONDS) >= 90)) {
+        if ((damagePenalty > 0) || (returnDate.after(expectedReturnDate)) || (TimeUnit.DAYS.convert(returnDate.getTime() - issueDate.getTime(), TimeUnit.MILLISECONDS) >= 90)) {
             context = new Context(new PenaltyStrategy(damagePenalty));
         } else {
             context = new Context(new NoPenaltyStrategy(user));
         }
 
-        if (TimeUnit.DAYS.convert(returnDate.getTime() - issueDate.getTime(), TimeUnit.MILLISECONDS) <= 30){
+        if ( ChronoUnit.DAYS.between(issueDate.toInstant(), returnDate.toInstant()) <= 30){
              userBalanceDeduction = book.getRentalDefaultCost();
         } else {
-               long extraPeriod = TimeUnit.DAYS.convert(returnDate.getTime() - expectedReturnDate.getTime(), TimeUnit.MILLISECONDS);
+               long extraPeriod = ChronoUnit.DAYS.between(issueDate.toInstant(), returnDate.toInstant()) - 30;
                userBalanceDeduction = book.getRentalDefaultCost() + book.getRentalExtraDayPrice() * extraPeriod;
            }
 
-        context.executeStrategy(userBalanceDeduction);
-
-        return userBalanceDeduction;
+        return context.executeStrategy(userBalanceDeduction);
     }
 }
