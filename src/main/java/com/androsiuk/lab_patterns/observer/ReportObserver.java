@@ -16,7 +16,6 @@ public class ReportObserver extends Observer{
         if(returnDate.after(currDate)){
             monthlyReport.setBooksIssued(monthlyReport.getBooksIssued() + 1);
         } else {
-            monthlyReport.setBooksIssued(monthlyReport.getBooksIssued() - 1);
             monthlyReport.setLibraryIncome(monthlyReport.getLibraryIncome() + userBalanceDeduction);
         }
         if (monthlyReportRepository.existsById(monthlyReport.getId())){

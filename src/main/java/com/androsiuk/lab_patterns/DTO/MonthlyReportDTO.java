@@ -2,7 +2,7 @@ package com.androsiuk.lab_patterns.DTO;
 
 import lombok.*;
 
-import java.sql.Date;
+import java.util.Date;
 
 @Data
 @AllArgsConstructor

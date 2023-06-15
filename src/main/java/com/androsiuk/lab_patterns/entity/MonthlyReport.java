@@ -3,7 +3,7 @@ package com.androsiuk.lab_patterns.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.sql.Date;
+import java.util.Date;
 
 @Entity
 @Table(name = "monthly_report")
