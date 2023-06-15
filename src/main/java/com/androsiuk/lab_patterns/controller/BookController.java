@@ -30,8 +30,8 @@ public class BookController {
     }
 
     @PostMapping
-    public ResponseEntity<BookDTO> create(@RequestBody Book book) {
-        return new ResponseEntity<>(bookMapper.map(bookService.create(book)), HttpStatus.OK);
+    public ResponseEntity<BookDTO> create(@RequestBody BookDTO bookDTO) {
+        return new ResponseEntity<>(bookMapper.map(bookService.transformDTO(bookDTO)), HttpStatus.OK);
     }
 
     @PutMapping(path = "/{id}")

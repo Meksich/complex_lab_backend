@@ -26,7 +26,9 @@ public class BookMapper implements Mapper<Book, BookDTO>{
         bookDTOBuilder.setLibraryId(book.getLibrary().getId());
 
         Set<Integer> loanIds = new HashSet<>();
-        book.getLoans().forEach((e) -> loanIds.add(e.getId()));
+        if (book.getLoans() != null) {
+            book.getLoans().forEach((e) -> loanIds.add(e.getId()));
+        }
 
         bookDTOBuilder.setLoanIds(loanIds);
         return bookDTOBuilder.build();
